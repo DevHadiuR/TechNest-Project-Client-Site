@@ -53,81 +53,36 @@ const Header = () => {
 
   const navList = (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <Typography as="li" className="p-1 text-lg">
-        <NavLink
-          to="/"
-          className="transition-all  px-3 py-2  hover:bg-transparent border-animate"
-          style={({ isActive }) => {
-            return {
-              borderBottom: isActive ? "2px solid #fff" : "",
-              backgroundColor: isActive ? "transparent" : "transparent",
-              // color: isActive ? "white" : "white",
-            };
-          }}
-        >
-          Home
-        </NavLink>
-      </Typography>
-      <Typography as="li" className="p-1 text-lg">
-        <NavLink
-          to="/products"
-          className="transition-all  px-3 py-2  hover:bg-transparent border-animate"
-          style={({ isActive }) => {
-            return {
-              borderBottom: isActive ? "2px solid #fff" : "",
-              backgroundColor: isActive ? "transparent" : "transparent",
-              // color: isActive ? "white" : "white",
-            };
-          }}
-        >
-          All Products
-        </NavLink>
-      </Typography>
-      <Typography as="li" className="p-1 text-lg">
-        <NavLink
-          to="/about"
-          className="transition-all  px-3 py-2  hover:bg-transparent border-animate"
-          style={({ isActive }) => {
-            return {
-              borderBottom: isActive ? "2px solid #fff" : "",
-              backgroundColor: isActive ? "transparent" : "transparent",
-              // color: isActive ? "white" : "white",
-            };
-          }}
-        >
-          About
-        </NavLink>
-      </Typography>
-      <Typography as="li" className="p-1 text-lg">
-        <NavLink
-          to="/contact"
-          className="transition-all  px-3 py-2  hover:bg-transparent border-animate"
-          style={({ isActive }) => {
-            return {
-              borderBottom: isActive ? "2px solid #fff" : "",
-              backgroundColor: isActive ? "transparent" : "transparent",
-              // color: isActive ? "white" : "white",
-            };
-          }}
-        >
-          Contact Us
-        </NavLink>
-      </Typography>
-      <Typography as="li" className="p-1 text-lg">
-        <NavLink
-          to="/cart"
-          className="transition-all  px-3 py-2  hover:bg-transparent border-animate"
-          style={({ isActive }) => {
-            return {
-              borderBottom: isActive ? "2px solid #fff" : "",
-              backgroundColor: isActive ? "transparent" : "transparent",
-              // color: isActive ? "white" : "white",
-            };
-          }}
-        >
-          Cart
-        </NavLink>
-      </Typography>
+      <a
+        href="#"
+        className="p-1 text-lg transition-all  px-3 py-2  hover:bg-transparent border-animate"
+      >
+        Home
+      </a>
+      <a
+        href="#products"
+        className="p-1 text-lg transition-all  px-3 py-2  hover:bg-transparent border-animate"
+      >
+        All Products
+      </a>
+      <a
+        href="#about"
+        className="p-1 text-lg transition-all  px-3 py-2  hover:bg-transparent border-animate"
+      >
+        About
+      </a>
+      <a
+        href="#contact"
+        className="p-1 text-lg transition-all  px-3 py-2  hover:bg-transparent border-animate"
+      >
+        Contact Us
+      </a>
+      <a
+        href="#cart"
+        className="p-1 text-lg transition-all  px-3 py-2  hover:bg-transparent border-animate"
+      >
+        Cart
+      </a>
     </ul>
   );
 
