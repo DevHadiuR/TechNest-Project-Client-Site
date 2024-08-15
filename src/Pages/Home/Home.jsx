@@ -3,6 +3,7 @@ import Products from "../../allComponents/products/Products";
 import Cart from "../../allComponents/cart/Cart";
 import About from "../../allComponents/about/About";
 import Contact from "../../allComponents/contact/Contact";
+import Banner from "../../allComponents/banner/Banner";
 
 const Home = () => {
   return (
@@ -11,9 +12,13 @@ const Home = () => {
         <title>TectNest | Home Page</title>
       </Helmet>
       <div>
+        <section>
+          <Banner></Banner>
+        </section>
         <section id="products">
           <Products></Products>
         </section>
+
         <section id="cart">
           <Cart></Cart>
         </section>

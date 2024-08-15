@@ -87,7 +87,7 @@ const Header = () => {
   );
 
   return (
-    <div className="mb-28">
+    <div className="mb-24">
       <Navbar className="fixed  z-50 top-0 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4 bg-[#180161]">
         <div className="flex items-center justify-between">
           <Typography
