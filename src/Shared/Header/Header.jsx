@@ -9,15 +9,13 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
-// import useAuth from "../../hook/useAuth";
+
 import { IoPower } from "react-icons/io5";
 import Swal from "sweetalert2";
+import useAuth from "../../hook/useAuth";
 
 const Header = () => {
-  const user = false;
-  const logoutUser = true;
-
-  // const { user, logoutUser } = useAuth();
+  const { user, logoutUser } = useAuth();
 
   const { email, photoURL, displayName } = user || {};
 
