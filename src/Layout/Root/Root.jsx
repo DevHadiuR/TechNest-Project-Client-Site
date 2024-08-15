@@ -7,7 +7,7 @@ const Root = () => {
     <div>
       <Header></Header>
       <div className="border-2 border-red-400 min-h-screen">
-      <Outlet></Outlet>
+        <Outlet></Outlet>
       </div>
       <Footer></Footer>
     </div>
