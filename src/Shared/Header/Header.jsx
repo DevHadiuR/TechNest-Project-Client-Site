@@ -8,7 +8,7 @@ import {
   Button,
   IconButton,
 } from "@material-tailwind/react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import useAuth from "../../hook/useAuth";
 import { IoPower } from "react-icons/io5";
 import Swal from "sweetalert2";
@@ -16,7 +16,7 @@ import Swal from "sweetalert2";
 const Header = () => {
   const user = false;
   const logoutUser = true;
-  const logo = true;
+
   // const { user, logoutUser } = useAuth();
 
   const { email, photoURL, displayName } = user || {};
