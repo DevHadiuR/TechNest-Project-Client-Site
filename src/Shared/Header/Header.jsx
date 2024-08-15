@@ -53,13 +53,13 @@ const Header = () => {
 
   const navList = (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <Typography as="li" className="p-1 font-semibold">
+      <Typography as="li" className="p-1 text-lg">
         <NavLink
           to="/"
           className="transition-all  px-3 py-2  hover:bg-transparent border-animate"
           style={({ isActive }) => {
             return {
-              borderBottom: isActive ? "2px solid #39474F" : "",
+              borderBottom: isActive ? "2px solid #fff" : "",
               backgroundColor: isActive ? "transparent" : "transparent",
               // color: isActive ? "white" : "white",
             };
@@ -68,34 +68,64 @@ const Header = () => {
           Home
         </NavLink>
       </Typography>
-      <Typography as="li" className="p-1 font-semibold">
+      <Typography as="li" className="p-1 text-lg">
         <NavLink
-          to="/allProperties"
+          to="/products"
           className="transition-all  px-3 py-2  hover:bg-transparent border-animate"
           style={({ isActive }) => {
             return {
-              borderBottom: isActive ? "2px solid #39474F" : "",
+              borderBottom: isActive ? "2px solid #fff" : "",
               backgroundColor: isActive ? "transparent" : "transparent",
               // color: isActive ? "white" : "white",
             };
           }}
         >
-          All Properties
+          All Products
         </NavLink>
       </Typography>
-      <Typography as="li" className="p-1 font-semibold ">
+      <Typography as="li" className="p-1 text-lg">
         <NavLink
-          to="/dashboard/profile"
+          to="/about"
           className="transition-all  px-3 py-2  hover:bg-transparent border-animate"
           style={({ isActive }) => {
             return {
-              borderBottom: isActive ? "2px solid #39474F" : "",
+              borderBottom: isActive ? "2px solid #fff" : "",
               backgroundColor: isActive ? "transparent" : "transparent",
               // color: isActive ? "white" : "white",
             };
           }}
         >
-          Dashboard
+          About
+        </NavLink>
+      </Typography>
+      <Typography as="li" className="p-1 text-lg">
+        <NavLink
+          to="/contact"
+          className="transition-all  px-3 py-2  hover:bg-transparent border-animate"
+          style={({ isActive }) => {
+            return {
+              borderBottom: isActive ? "2px solid #fff" : "",
+              backgroundColor: isActive ? "transparent" : "transparent",
+              // color: isActive ? "white" : "white",
+            };
+          }}
+        >
+          Contact Us
+        </NavLink>
+      </Typography>
+      <Typography as="li" className="p-1 text-lg">
+        <NavLink
+          to="/cart"
+          className="transition-all  px-3 py-2  hover:bg-transparent border-animate"
+          style={({ isActive }) => {
+            return {
+              borderBottom: isActive ? "2px solid #fff" : "",
+              backgroundColor: isActive ? "transparent" : "transparent",
+              // color: isActive ? "white" : "white",
+            };
+          }}
+        >
+          Cart
         </NavLink>
       </Typography>
     </ul>
@@ -103,14 +133,23 @@ const Header = () => {
 
   return (
     <div className="mb-28">
-      <Navbar className="fixed  z-50 top-0 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
-        <div className="flex items-center  text-[#39474F] justify-between">
+      <Navbar className="fixed  z-50 top-0 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4 bg-[#180161]">
+        <div className="flex items-center justify-between">
           <Typography
             as="a"
             href="/"
-            className="mr-4 w-24 md:w-32 cursor-pointer py-1.5 font-medium"
+            className="mr-4  cursor-pointer  font-signature text-3xl text-[#FB773C]"
           >
-            <img src={logo} alt="Website-log" />
+            <p className="text-3xl flex justify-between items-center">
+              <span className="mr-2 text-white font-semibold">{"<"}</span>
+              <span className="font-signature text-xl md:text-3xl">
+                {" "}
+                Tech
+                <span className="mx-2 text-white ">\</span>
+                Nest
+              </span>
+              <span className="ml-3 text-white font-semibold">{">"}</span>
+            </p>
           </Typography>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
@@ -120,7 +159,7 @@ const Header = () => {
               {user ? (
                 <div className="dropdown md:dropdown-hover">
                   <div tabIndex={0} role="button" className="avatar m-1">
-                    <div className="w-10 md:w-12 lg:w-14 rounded-full ring ring-[#FDB913] ring-offset-base-100 ring-offset-2">
+                    <div className="w-10 md:w-12 lg:w-14 rounded-full ring ring-red-500 ring-offset-base-100 ring-offset-2">
                       <img src={photoURL} />
                     </div>
                   </div>
@@ -138,7 +177,7 @@ const Header = () => {
                     <li className="w-full my-3">
                       <Button
                         onClick={logout}
-                        color="amber"
+                        color="red"
                         size="sm"
                         className="flex justify-center items-center gap-2 md:text-base w-full hover:bg-[#39474F] hover:text-white"
                       >
@@ -155,20 +194,21 @@ const Header = () => {
                     <Button
                       variant="text"
                       size="sm"
-                      className="hidden text-[#39474F]  text-base hover:bg-transparent lg:inline-block border-animate"
+                      color="red"
+                      className="hidden   text-base hover:bg-transparent lg:inline-block border-animate"
                     >
                       <span>Log In</span>
                     </Button>
                   </Link>
-                  <span className="text-black text-3xl mr-3 hidden lg:inline-block">
+                  <span className="text-white text-3xl mr-3 hidden lg:inline-block">
                     /
                   </span>
                   <Link to="/register">
                     <Button
                       variant="gradient"
                       size="sm"
-                      color="amber"
-                      className="hidden text-[#39474F] text-base lg:inline-block"
+                      color="red"
+                      className="hidden text-[#fff] text-base lg:inline-block"
                     >
                       <span>REGISTER</span>
                     </Button>
@@ -216,7 +256,7 @@ const Header = () => {
             </IconButton>
           </div>
         </div>
-        <MobileNav className="text-[#39474F] mt-5" open={openNav}>
+        <MobileNav className="mt-5" open={openNav}>
           {navList}
           <div className="flex items-center gap-x-1 ">
             {!user && (
@@ -226,14 +266,15 @@ const Header = () => {
                     fullWidth
                     variant="outlined"
                     size="sm"
-                    className="border-[#39474F]"
+                    color="red"
+                    className="border-[#fff]"
                   >
                     <span>Log In</span>
                   </Button>
                 </Link>
 
                 <Link to="/register" className="w-full">
-                  <Button fullWidth variant="gradient" color="amber" size="sm">
+                  <Button fullWidth variant="gradient" color="red" size="sm">
                     <span>REGISTER</span>
                   </Button>
                 </Link>
