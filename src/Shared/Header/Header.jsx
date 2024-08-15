@@ -149,7 +149,6 @@ const Header = () => {
                     <Button
                       variant="text"
                       size="sm"
-                      
                       className="hidden text-[#180161]   text-base hover:bg-transparent lg:inline-block border-animate"
                     >
                       <span>Log In</span>
@@ -174,7 +173,7 @@ const Header = () => {
 
             <IconButton
               variant="text"
-              className="ml-auto h-6 w-6 border-4 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+              className="ml-auto h-6 w-6  text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
               ripple={false}
               onClick={() => setOpenNav(!openNav)}
             >
@@ -221,7 +220,6 @@ const Header = () => {
                     fullWidth
                     variant="outlined"
                     size="sm"
-               
                     className="border-[#fff] text-[#180161]"
                   >
                     <span>Log In</span>
