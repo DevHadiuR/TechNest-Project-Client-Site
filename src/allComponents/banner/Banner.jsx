@@ -43,11 +43,14 @@ const Banner = () => {
             <div className="hero-overlay bg-opacity-40"></div>
             <div className="hero-content text-center text-neutral-content">
               <div className="max-w-3xl mt-28 md:mt-0">
-                <h4 className="mb-5 text-white text-xl md:text-2xl lg:text-5xl font-bold">
-                Power Up Your Productivity
+                <h4 className="mb-5 text-white text-xl md:text-2xl lg:text-5xl font-medium">
+                  Power Up Your Productivity
                 </h4>
                 <p className="mb-5 text-sm md:text-base lg:text-lg">
-                  Join NovaHomes to explore an extensive collection Discover our range of high-performance laptops, designed to meet all your computing needs. Whether youre working, gaming, or creating, our laptops deliver speed and efficiency.
+                  Join NovaHomes to explore an extensive collection Discover our
+                  range of high-performance laptops, designed to meet all your
+                  computing needs. Whether youre working, gaming, or creating,
+                  our laptops deliver speed and efficiency.
                 </p>
               </div>
             </div>
@@ -62,11 +65,13 @@ const Banner = () => {
             <div className="hero-overlay bg-opacity-40"></div>
             <div className="hero-content text-center text-neutral-content">
               <div className="max-w-3xl mt-28 md:mt-0">
-                <h4 className="mb-5 text-white text-xl md:text-2xl lg:text-5xl font-bold">
-                Stay Connected, Anywhere
+                <h4 className="mb-5 text-white text-xl md:text-2xl lg:text-5xl font-medium">
+                  Stay Connected, Anywhere
                 </h4>
                 <p className="mb-5 text-sm md:text-base lg:text-lg">
-                Explore the latest mobile phones that keep you connected on the go. With cutting-edge technology and sleek designs, our phones offer the perfect balance of style and functionality.
+                  Explore the latest mobile phones that keep you connected on
+                  the go. With cutting-edge technology and sleek designs, our
+                  phones offer the perfect balance of style and functionality.
                 </p>
               </div>
             </div>
@@ -81,11 +86,13 @@ const Banner = () => {
             <div className="hero-overlay bg-opacity-40"></div>
             <div className="hero-content text-center text-neutral-content">
               <div className="max-w-3xl mt-28 md:mt-0">
-                <h4 className="mb-5 text-white text-xl md:text-2xl lg:text-5xl font-bold">
-                Type with Precision
+                <h4 className="mb-5 text-white text-xl md:text-2xl lg:text-5xl font-medium">
+                  Type with Precision
                 </h4>
                 <p className="mb-5 text-sm md:text-base lg:text-lg">
-                Enhance your typing experience with our premium keyboards. From mechanical to wireless options, our keyboards are built for comfort, durability, and accuracy.
+                  Enhance your typing experience with our premium keyboards.
+                  From mechanical to wireless options, our keyboards are built
+                  for comfort, durability, and accuracy.
                 </p>
               </div>
             </div>
@@ -100,11 +107,13 @@ const Banner = () => {
             <div className="hero-overlay bg-opacity-40"></div>
             <div className="hero-content text-center text-neutral-content">
               <div className="max-w-3xl mt-28 md:mt-0">
-                <h4 className="mb-5 text-white text-xl md:text-2xl lg:text-5xl font-bold">
-                Navigate with Ease
+                <h4 className="mb-5 text-white text-xl md:text-2xl lg:text-5xl font-medium">
+                  Navigate with Ease
                 </h4>
                 <p className="mb-5 text-sm md:text-base lg:text-lg">
-                Get the perfect grip with our ergonomic mice. Designed for precision and comfort, our mice are ideal for both work and play, ensuring smooth navigation every time.
+                  Get the perfect grip with our ergonomic mice. Designed for
+                  precision and comfort, our mice are ideal for both work and
+                  play, ensuring smooth navigation every time.
                 </p>
               </div>
             </div>

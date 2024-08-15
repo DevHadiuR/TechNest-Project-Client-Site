@@ -88,12 +88,12 @@ const Header = () => {
 
   return (
     <div className="mb-24">
-      <Navbar className="fixed  z-50 top-0 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4 bg-[#180161]">
+      <Navbar className="fixed  z-50 top-0 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4 bg-[#EB3678]">
         <div className="flex items-center justify-between">
           <Typography
             as="a"
             href="/"
-            className="mr-4  cursor-pointer  font-signature text-3xl text-[#FB773C]"
+            className="mr-4  cursor-pointer  font-signature text-3xl text-[#180161]"
           >
             <p className="text-3xl flex justify-between items-center">
               <span className="mr-2 text-white font-semibold">{"<"}</span>
@@ -149,8 +149,8 @@ const Header = () => {
                     <Button
                       variant="text"
                       size="sm"
-                      color="red"
-                      className="hidden   text-base hover:bg-transparent lg:inline-block border-animate"
+                      
+                      className="hidden text-[#180161]   text-base hover:bg-transparent lg:inline-block border-animate"
                     >
                       <span>Log In</span>
                     </Button>
@@ -221,8 +221,8 @@ const Header = () => {
                     fullWidth
                     variant="outlined"
                     size="sm"
-                    color="red"
-                    className="border-[#fff]"
+               
+                    className="border-[#fff] text-[#180161]"
                   >
                     <span>Log In</span>
                   </Button>
