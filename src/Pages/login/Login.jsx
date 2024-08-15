@@ -35,137 +35,85 @@ const Login = () => {
   };
 
   //    email & password verification
-  // const onSubmit = (data) => {
-  //   console.log(data);
-  //   const { email, password } = data;
-  //   loginUser(email, password)
-  //     .then((result) => {
-  //       const user = result.user;
-  //       console.log(user);
-  //       Swal.fire({
-  //         title: "Hurray !!!",
-  //         text: "You Have Successfully Loged In!",
-  //         icon: "success",
-  //       });
+  const onSubmit = (data) => {
+    console.log(data);
+    const { email, password } = data;
+    loginUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        Swal.fire({
+          title: "Hurray !!!",
+          text: "You Have Successfully Loged In!",
+          icon: "success",
+        });
 
-  //       navigate(from, { replace: true });
-  //     })
-  //     .catch(() => {
-  //       Swal.fire({
-  //         icon: "error",
-  //         title: "Oops...",
-  //         text: "User Not Found !",
-  //       });
-  //     });
-  // };
- 
+        navigate(from, { replace: true });
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "User Not Found !",
+        });
+      });
+  };
 
   // login with gooogle --
-  //   const handleGoogleLogin = () => {
-  //     googleProvider()
-  //       .then((result) => {
-  //         const user = result.user;
-  //         console.log(user);
+  const handleGoogleLogin = () => {
+    googleProvider()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
 
-  //         const userInfo = {
-  //           name: user.displayName,
-  //           email: user.email,
-  //           photo: user.photoURL,
-  //         };
-
-  //         axiosPublic
-  //           .post("/allUsers", userInfo)
-  //           .then((res) => {
-  //             console.log(res.data);
-
-  //             Swal.fire({
-  //               title: "Hurray !!!",
-  //               text: "You Have Successfully Loged In!",
-  //               icon: "success",
-  //             });
-
-  //             navigate(from, { replace: true });
-  //           })
-  //           .catch((err) => console.log(err));
-  //       })
-  //       .catch(() => {
-  //         Swal.fire({
-  //           icon: "error",
-  //           title: "Oops...",
-  //           text: "User Not Found !",
-  //         });
-  //       });
-  //   };
+        if (user) {
+          navigate(from, { replace: true });
+        }
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "User Not Found !",
+        });
+      });
+  };
   // login with github --
-  //   const handleGithubLogin = () => {
-  //     gitHubProvider()
-  //       .then((result) => {
-  //         const user = result.user;
-  //         console.log(user);
-  //         const userInfo = {
-  //           name: user.displayName,
-  //           email: user.email,
-  //           photo: user.photoURL,
-  //         };
-
-  //         axiosPublic
-  //           .post("/allUsers", userInfo)
-  //           .then((res) => {
-  //             console.log(res.data);
-
-  //             Swal.fire({
-  //               title: "Hurray !!!",
-  //               text: "You Have Successfully Loged In!",
-  //               icon: "success",
-  //             });
-
-  //             navigate(from, { replace: true });
-  //           })
-  //           .catch((err) => console.log(err));
-  //       })
-  //       .catch(() => {
-  //         Swal.fire({
-  //           icon: "error",
-  //           title: "Oops...",
-  //           text: "User Not Found !",
-  //         });
-  //       });
-  //   };
+  const handleGithubLogin = () => {
+    gitHubProvider()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        if (user) {
+          navigate(from, { replace: true });
+        }
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "User Not Found !",
+        });
+      });
+  };
   // login with twitter --
-  //   const handleTwitterLogin = () => {
-  //     twitterProvider()
-  //       .then((result) => {
-  //         const user = result.user;
-  //         console.log(user);
-  //         const userInfo = {
-  //           name: user.displayName,
-  //           email: user.email,
-  //           photo: user.photoURL,
-  //         };
-
-  //         axiosPublic
-  //           .post("/allUsers", userInfo)
-  //           .then((res) => {
-  //             console.log(res.data);
-
-  //             Swal.fire({
-  //               title: "Hurray !!!",
-  //               text: "You Have Successfully Loged In!",
-  //               icon: "success",
-  //             });
-
-  //             navigate(from, { replace: true });
-  //           })
-  //           .catch((err) => console.log(err));
-  //       })
-  //       .catch(() => {
-  //         Swal.fire({
-  //           icon: "error",
-  //           title: "Oops...",
-  //           text: "User Not Found !",
-  //         });
-  //       });
-  //   };
+  const handleTwitterLogin = () => {
+    twitterProvider()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        if (user) {
+          navigate(from, { replace: true });
+        }
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "User Not Found !",
+        });
+      });
+  };
 
   return (
     <div className="mx-4 my-14 md:container lg:max-w-6xl lg:mx-auto">
@@ -253,19 +201,19 @@ const Login = () => {
           <div className="text-[#39474F] border-t border-[#39474F] pt-10 mt-6">
             <div className="flex justify-center items-center mb-5 gap-6">
               <span
-                //  onClick={handleGoogleLogin}
+                onClick={handleGoogleLogin}
                 className="border-2 p-2 border-[#39474F] rounded-full"
               >
                 <FcGoogle className="text-2xl cursor-pointer hover:scale-125 transition-all" />
               </span>
               <span
-                //  onClick={handleGithubLogin}
+                onClick={handleGithubLogin}
                 className="border-2 p-2 border-[#39474F] rounded-full"
               >
                 <FaGithub className="text-2xl cursor-pointer hover:scale-125 transition-all" />
               </span>
               <span
-                //  onClick={handleTwitterLogin}
+                onClick={handleTwitterLogin}
                 className="border-2 p-2 border-[#39474F] rounded-full"
               >
                 <FaTwitter className="text-2xl cursor-pointer hover:scale-125 transition-all text-blue-500" />
