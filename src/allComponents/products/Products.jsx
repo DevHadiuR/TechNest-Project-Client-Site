@@ -6,6 +6,7 @@ import { Typography } from "@material-tailwind/react";
 import SingleProduct from "./SingleProduct";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import PaginationCode from "./PaginationCode";
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -22,17 +23,39 @@ const Products = () => {
 
   console.log(selectedCategory, search);
 
-  // Fetch data
+  // Fetch all data
   const { data: Products = [], isLoading } = useQuery({
     queryFn: () => getData(),
     queryKey: ["allProducts"],
   });
 
   const getData = async () => {
-    const { data } = await axios("/data.json");
+    const { data } = await axios("http://localhost:5000/allProducts");
     setSearchText("");
     return data;
   };
+
+  // Fetch data counting For Pagination----------------
+  const { data: Count = {} } = useQuery({
+    queryFn: () => getDataCount(),
+    queryKey: ["allProductsCount"],
+  });
+
+  const getDataCount = async () => {
+    const { data } = await axios("http://localhost:5000/allProductsCount");
+    return data.count;
+  };
+
+  const itemsPerPage = 6;
+  const numberOfPages = Math.ceil(Count / itemsPerPage);
+
+  const pages = [];
+  for (let i = 0; i < numberOfPages; i++) {
+    pages.push(i);
+  }
+  
+
+  // ------------------------
 
   return (
     <div className="pt-20">
@@ -84,6 +107,9 @@ const Products = () => {
             ))}
           </div>
         </div>
+      </div>
+      <div>
+        <PaginationCode numberOfPages={numberOfPages} pages={pages}></PaginationCode>
       </div>
     </div>
   );
