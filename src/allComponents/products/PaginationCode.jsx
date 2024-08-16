@@ -4,7 +4,7 @@ import { Pagination } from "flowbite-react";
 import { useState } from "react";
 
 const PaginationCode = ({ numberOfPages, currentPage, setCurrentPage }) => {
-  const totalPage = numberOfPages || 7;
+  const totalPage = numberOfPages || 0;
 
   const onPageChange = (page) => setCurrentPage(page);
   return (

@@ -14,6 +14,8 @@ const Products = () => {
   const [searchText, setSearchText] = useState("");
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [Count, setCount] = useState(0);
+
   // handle categorizing (price , brand name , category name)
   const handleBrand = (e) => {
     const { value, checked } = e.target;
@@ -51,15 +53,15 @@ const Products = () => {
   // ------------------------
 
   // Fetch data counting For Pagination----------------
-  const { data: Count = {} } = useQuery({
-    queryFn: () => getDataCount(),
-    queryKey: ["allProductsCount"],
-  });
+  // const { data: Count = {} } = useQuery({
+  //   queryFn: () => getDataCount(),
+  //   queryKey: ["allProductsCount"],
+  // });
 
-  const getDataCount = async () => {
-    const { data } = await axios("http://localhost:5000/allProductsCount");
-    return data.count;
-  };
+  // const getDataCount = async () => {
+  //   const { data } = await axios("http://localhost:5000/allProductsCount");
+  //   return data.count;
+  // };
 
   const itemsPerPage = 6;
   const numberOfPages = Math.ceil(Count / itemsPerPage);
@@ -73,7 +75,7 @@ const Products = () => {
   // ------------------------
 
   // Fetch all data
-  const { data: Products = [], isLoading } = useQuery({
+  const { data: Products = [] } = useQuery({
     queryFn: () => getData(),
     queryKey: [
       "allProducts",
@@ -91,7 +93,11 @@ const Products = () => {
       `http://localhost:5000/allProducts?page=${currentPage}&size=${itemsPerPage}&selectedSort=${selectedCategory}&search=${search}&selectedBrands=${selectedBrands}&selectedCategories=${selectedCategories}`
     );
     setSearchText("");
-    return data;
+
+    if (data.count) {
+      setCount(data.count);
+    }
+    return data.result;
   };
 
   return (
@@ -124,7 +130,10 @@ const Products = () => {
             <>
               <div className="flex justify-between gap-5 lg:gap-0">
                 <div className="lg:hidden">
-                  <DrawerCode></DrawerCode>
+                  <DrawerCode
+                   handleCategory={handleCategory}
+                   handleBrand={handleBrand}
+                  ></DrawerCode>
                 </div>
                 <>
                   <SortAndSearch
