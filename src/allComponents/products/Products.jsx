@@ -1,5 +1,8 @@
 import { useState } from "react";
 import SortAndSearch from "./SortAndSearch";
+import DrawerCode from "./DrawerCode";
+import CategoryCode from "./CategoryCode";
+import { Typography } from "@material-tailwind/react";
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -30,26 +33,31 @@ const Products = () => {
           boost your digital experience..
         </p>
       </>
-      <div className="mt-10 grid grid-cols-4 w-[95%] mx-auto">
-        <div className="border-4 border-red-300 hidden lg:block">
-          11111111111111
+      <div className="mt-10 lg:gap-5 grid grid-cols-4 w-[95%] mx-auto">
+        {/* left */}
+        <div className="hidden lg:block p-3 border border-purple-300">
+          <Typography className="mb-5" variant="h5" color="blue-gray">
+            Categorize products
+          </Typography>
+          <CategoryCode></CategoryCode>
         </div>
-        <div className="border-4 border-green-300 col-span-4 lg:col-span-3">
+        {/* right */}
+        <div className="col-span-4 lg:col-span-3 ">
           <div>
-            {/* sort and search div */}
+            {/* drawer and sort and search div */}
             <>
-              <div>
-                <div>
-                  
+              <div className="flex justify-between gap-5 lg:gap-0">
+                <div className="lg:hidden">
+                  <DrawerCode></DrawerCode>
                 </div>
-                <div>
+                <>
                   <SortAndSearch
                     searchText={searchText}
                     setSearchText={setSearchText}
                     handleSearch={handleSearch}
                     handleDropDownCategory={handleDropDownCategory}
                   ></SortAndSearch>
-                </div>
+                </>
               </div>
             </>
           </div>

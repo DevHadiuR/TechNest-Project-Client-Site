@@ -8,8 +8,8 @@ const SortAndSearch = ({
   searchText,
 }) => {
   return (
-    <div className="flex flex-col-reverse md:flex-row justify-between items-start md:items-center w-[90%] mx-auto ">
-      <div className="mt-3 md:mt-0  w-full md:w-auto flex md:block justify-end md:justify-start">
+    <div className="w-full items-start md:items-center  flex justify-between flex-col-reverse  lg:flex-row">
+      <div className="mt-3 lg:mt-0 w-full flex lg:block justify-end  lg:justify-normal">
         <Dropdown
           gradientDuoTone="purpleToPink"
           label="Sort"
@@ -38,15 +38,15 @@ const SortAndSearch = ({
           </Dropdown.Item>
         </Dropdown>
       </div>
-      <div>
+      <div className="w-full">
         <form onSubmit={handleSearch}>
-          <label className="input input-primary input-bordered flex items-center lg:gap-2 w-[80%] lg:w-full">
+          <label className="input input-primary input-bordered flex items-center">
             <input
               name="searchTitle"
               type="text"
               onChange={(e) => setSearchText(e.target.value)}
               value={searchText}
-              className="border-none input input-bordered "
+              className="border-none input input-bordered w-[90%] md:w-full"
               placeholder="Search Product By Name "
             />
             <button type="submit">
