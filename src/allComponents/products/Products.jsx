@@ -12,6 +12,23 @@ const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [search, setSearch] = useState("");
   const [searchText, setSearchText] = useState("");
+  const [selectedBrands, setSelectedBrands] = useState([]);
+  // handle categorizing (price , brand name , category name)
+  const handleBrand = (e) => {
+    const { value, checked } = e.target;
+    setSelectedBrands((prev) => {
+      if (checked) {
+        return [...prev, value];
+      } else {
+        return prev.filter((brand) => brand !== value);
+      }
+    });
+  };
+  console.log(selectedBrands);
+
+  // ---------------------------
+
+  // handle dropdown and search
   const handleDropDownCategory = (entry) => {
     setSelectedCategory(entry);
   };
@@ -20,8 +37,7 @@ const Products = () => {
     // const value = e.target.searchTitle.value;
     setSearch(searchText);
   };
-
-  console.log(search);
+  // ------------------------
 
   // Fetch data counting For Pagination----------------
   const { data: Count = {} } = useQuery({
@@ -54,12 +70,13 @@ const Products = () => {
       currentPage,
       selectedCategory,
       search,
+      selectedBrands,
     ],
   });
 
   const getData = async () => {
     const { data } = await axios(
-      `http://localhost:5000/allProducts?page=${currentPage}&size=${itemsPerPage}&selectedSort=${selectedCategory}&search=${search}`
+      `http://localhost:5000/allProducts?page=${currentPage}&size=${itemsPerPage}&selectedSort=${selectedCategory}&search=${search}&selectedBrands=${selectedBrands}`
     );
     setSearchText("");
     return data;
@@ -83,7 +100,7 @@ const Products = () => {
           <Typography className="mb-5" variant="h5" color="blue-gray">
             Categorize products
           </Typography>
-          <CategoryCode></CategoryCode>
+          <CategoryCode handleBrand={handleBrand}></CategoryCode>
         </div>
         {/* right */}
         <div className="col-span-4 lg:col-span-3 ">
@@ -116,6 +133,7 @@ const Products = () => {
           </div>
         </div>
       </div>
+      {/* paginatin div */}
       <div>
         <PaginationCode
           currentPage={currentPage}

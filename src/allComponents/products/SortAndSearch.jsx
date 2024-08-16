@@ -47,7 +47,7 @@ const SortAndSearch = ({
               onChange={(e) => setSearchText(e.target.value)}
               value={searchText}
               className="border-none input input-bordered w-[90%] md:w-full"
-              placeholder="Search Product By Name "
+              placeholder="Search Product By Name"
             />
             <button type="submit">
               <svg
