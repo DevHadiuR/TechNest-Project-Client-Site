@@ -13,6 +13,7 @@ const Products = () => {
   const [search, setSearch] = useState("");
   const [searchText, setSearchText] = useState("");
   const [selectedBrands, setSelectedBrands] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
   // handle categorizing (price , brand name , category name)
   const handleBrand = (e) => {
     const { value, checked } = e.target;
@@ -24,7 +25,17 @@ const Products = () => {
       }
     });
   };
-  console.log(selectedBrands);
+
+  const handleCategory = (e) => {
+    const { value, checked } = e.target;
+    setSelectedCategories((prev) => {
+      if (checked) {
+        return [...prev, value];
+      } else {
+        return prev.filter((category) => category !== value);
+      }
+    });
+  };
 
   // ---------------------------
 
@@ -71,12 +82,13 @@ const Products = () => {
       selectedCategory,
       search,
       selectedBrands,
+      selectedCategories,
     ],
   });
 
   const getData = async () => {
     const { data } = await axios(
-      `http://localhost:5000/allProducts?page=${currentPage}&size=${itemsPerPage}&selectedSort=${selectedCategory}&search=${search}&selectedBrands=${selectedBrands}`
+      `http://localhost:5000/allProducts?page=${currentPage}&size=${itemsPerPage}&selectedSort=${selectedCategory}&search=${search}&selectedBrands=${selectedBrands}&selectedCategories=${selectedCategories}`
     );
     setSearchText("");
     return data;
@@ -100,7 +112,10 @@ const Products = () => {
           <Typography className="mb-5" variant="h5" color="blue-gray">
             Categorize products
           </Typography>
-          <CategoryCode handleBrand={handleBrand}></CategoryCode>
+          <CategoryCode
+            handleCategory={handleCategory}
+            handleBrand={handleBrand}
+          ></CategoryCode>
         </div>
         {/* right */}
         <div className="col-span-4 lg:col-span-3 ">

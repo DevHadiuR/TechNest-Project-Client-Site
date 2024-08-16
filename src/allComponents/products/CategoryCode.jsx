@@ -1,4 +1,4 @@
-const CategoryCode = ({ handleBrand }) => {
+const CategoryCode = ({ handleBrand, handleCategory }) => {
   return (
     <>
       {/* price */}
@@ -33,19 +33,19 @@ const CategoryCode = ({ handleBrand }) => {
         <h1 className="text-lg font-medium">Category Name</h1>
         <form>
           <div className="flex gap-3 items-center">
-            <input type="checkbox" value="Laptop" />
+            <input onChange={handleCategory} type="checkbox" value="Laptop" />
             <label>Laptop</label>
           </div>
           <div className="flex gap-3 items-center">
-            <input type="checkbox" value="Mobile" />
+            <input onChange={handleCategory} type="checkbox" value="Mobile" />
             <label>Mobile</label>
           </div>
           <div className="flex gap-3 items-center">
-            <input type="checkbox" value="Keyboard" />
+            <input onChange={handleCategory} type="checkbox" value="Keyboard" />
             <label>Keyboard</label>
           </div>
           <div className="flex gap-3 items-center">
-            <input type="checkbox" value="Mouse" />
+            <input onChange={handleCategory} type="checkbox" value="Mouse" />
             <label>Mouse</label>
           </div>
         </form>
