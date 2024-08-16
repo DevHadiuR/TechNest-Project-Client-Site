@@ -21,7 +21,7 @@ const Products = () => {
     setSearch(searchText);
   };
 
-  console.log(selectedCategory, search);
+  console.log(search);
 
   // Fetch data counting For Pagination----------------
   const { data: Count = {} } = useQuery({
@@ -48,12 +48,18 @@ const Products = () => {
   // Fetch all data
   const { data: Products = [], isLoading } = useQuery({
     queryFn: () => getData(),
-    queryKey: ["allProducts", itemsPerPage, currentPage, selectedCategory],
+    queryKey: [
+      "allProducts",
+      itemsPerPage,
+      currentPage,
+      selectedCategory,
+      search,
+    ],
   });
 
   const getData = async () => {
     const { data } = await axios(
-      `http://localhost:5000/allProducts?page=${currentPage}&size=${itemsPerPage}&selectedSort=${selectedCategory}`
+      `http://localhost:5000/allProducts?page=${currentPage}&size=${itemsPerPage}&selectedSort=${selectedCategory}&search=${search}`
     );
     setSearchText("");
     return data;
