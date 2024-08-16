@@ -23,18 +23,6 @@ const Products = () => {
 
   console.log(selectedCategory, search);
 
-  // Fetch all data
-  const { data: Products = [], isLoading } = useQuery({
-    queryFn: () => getData(),
-    queryKey: ["allProducts"],
-  });
-
-  const getData = async () => {
-    const { data } = await axios("http://localhost:5000/allProducts");
-    setSearchText("");
-    return data;
-  };
-
   // Fetch data counting For Pagination----------------
   const { data: Count = {} } = useQuery({
     queryFn: () => getDataCount(),
@@ -53,9 +41,23 @@ const Products = () => {
   for (let i = 0; i < numberOfPages; i++) {
     pages.push(i);
   }
-  
+  const [currentPage, setCurrentPage] = useState(1);
 
   // ------------------------
+
+  // Fetch all data
+  const { data: Products = [], isLoading } = useQuery({
+    queryFn: () => getData(),
+    queryKey: ["allProducts", itemsPerPage, currentPage, selectedCategory],
+  });
+
+  const getData = async () => {
+    const { data } = await axios(
+      `http://localhost:5000/allProducts?page=${currentPage}&size=${itemsPerPage}&selectedSort=${selectedCategory}`
+    );
+    setSearchText("");
+    return data;
+  };
 
   return (
     <div className="pt-20">
@@ -101,7 +103,7 @@ const Products = () => {
           <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {Products.map((Product) => (
               <SingleProduct
-                key={Product.Ratings}
+                key={Product._id}
                 Product={Product}
               ></SingleProduct>
             ))}
@@ -109,7 +111,11 @@ const Products = () => {
         </div>
       </div>
       <div>
-        <PaginationCode numberOfPages={numberOfPages} pages={pages}></PaginationCode>
+        <PaginationCode
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          numberOfPages={numberOfPages}
+        ></PaginationCode>
       </div>
     </div>
   );
