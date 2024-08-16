@@ -11,7 +11,7 @@ const Home = () => {
       <Helmet>
         <title>TectNest | Home Page</title>
       </Helmet>
-      <div>
+      <div className="space-y-20">
         <section>
           <Banner></Banner>
         </section>
