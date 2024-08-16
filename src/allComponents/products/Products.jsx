@@ -3,22 +3,35 @@ import SortAndSearch from "./SortAndSearch";
 import DrawerCode from "./DrawerCode";
 import CategoryCode from "./CategoryCode";
 import { Typography } from "@material-tailwind/react";
+import SingleProduct from "./SingleProduct";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [search, setSearch] = useState("");
   const [searchText, setSearchText] = useState("");
-
-  console.log(selectedCategory, search);
-
   const handleDropDownCategory = (entry) => {
     setSelectedCategory(entry);
   };
-
   const handleSearch = (e) => {
     e.preventDefault();
     // const value = e.target.searchTitle.value;
     setSearch(searchText);
+  };
+
+  console.log(selectedCategory, search);
+
+  // Fetch data
+  const { data: Products = [], isLoading } = useQuery({
+    queryFn: () => getData(),
+    queryKey: ["allProducts"],
+  });
+
+  const getData = async () => {
+    const { data } = await axios("/data.json");
+    setSearchText("");
+    return data;
   };
 
   return (
@@ -62,22 +75,13 @@ const Products = () => {
             </>
           </div>
           {/* all products card div */}
-          <div className="mt-5">
-            <div className="card bg-base-100 shadow-xl">
-              <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <button className="btn btn-primary">Buy Now</button>
-                </div>
-              </div>
-            </div>
+          <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {Products.map((Product) => (
+              <SingleProduct
+                key={Product.Ratings}
+                Product={Product}
+              ></SingleProduct>
+            ))}
           </div>
         </div>
       </div>
