@@ -7,6 +7,8 @@ import SingleProduct from "./SingleProduct";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import PaginationCode from "./PaginationCode";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -18,13 +20,22 @@ const Products = () => {
   const [minPrice, setMinPrice] = useState(undefined);
   const [maxPrice, setMaxPrice] = useState(undefined);
 
+  const handleError = (err) => {
+    Swal.fire({
+      icon: "error",
+      title: err,
+    });
+  };
+
   // handle min and max price range
   const handlePrice = (e) => {
     const { name, value } = e.target;
 
-    // if (name === "min" && value < 50) {
-    //   setMinPrice(50);
-    // }
+    if (name === "min" && (value < 0 || value > 550)) {
+      return handleError(
+        "Min price must be greater then or equal 50$ and less then 550$"
+      );
+    }
 
     if (name === "min") {
       setMinPrice(value);
@@ -32,8 +43,6 @@ const Products = () => {
       setMaxPrice(value);
     }
   };
-
-  console.log(`minPrice : ${minPrice}`, `maxPrice : ${maxPrice}`);
 
   // handle categorizing (price , brand name , category name)
   const handleBrand = (e) => {
@@ -70,17 +79,6 @@ const Products = () => {
     setSearch(searchText);
   };
   // ------------------------
-
-  // Fetch data counting For Pagination----------------
-  // const { data: Count = {} } = useQuery({
-  //   queryFn: () => getDataCount(),
-  //   queryKey: ["allProductsCount"],
-  // });
-
-  // const getDataCount = async () => {
-  //   const { data } = await axios("http://localhost:5000/allProductsCount");
-  //   return data.count;
-  // };
 
   const itemsPerPage = 6;
   const numberOfPages = Math.ceil(Count / itemsPerPage);
@@ -157,6 +155,9 @@ const Products = () => {
                   <DrawerCode
                     handleCategory={handleCategory}
                     handleBrand={handleBrand}
+                    handlePrice={handlePrice}
+                    minPrice={minPrice}
+                    maxPrice={maxPrice}
                   ></DrawerCode>
                 </div>
                 <>

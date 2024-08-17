@@ -14,7 +14,7 @@ const CategoryCode = ({
           <div className="">
             <input
               className="w-full border-purple-500 rounded-lg "
-              placeholder="Min"
+              placeholder="Min-50$"
               type="number"
               min="50"
               name="min"
@@ -26,7 +26,7 @@ const CategoryCode = ({
           <div className="">
             <input
               className="input-style w-full border-purple-500 rounded-lg"
-              placeholder="Max"
+              placeholder="Max-550$"
               type="number"
               max="550"
               name="max"

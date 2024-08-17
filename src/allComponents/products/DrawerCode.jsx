@@ -8,7 +8,13 @@ import {
 import { IoFilterSharp } from "react-icons/io5";
 import CategoryCode from "./CategoryCode";
 
-const DrawerCode = ({ handleCategory, handleBrand }) => {
+const DrawerCode = ({
+  handleCategory,
+  handleBrand,
+  handlePrice,
+  minPrice,
+  maxPrice,
+}) => {
   const [openRight, setOpenRight] = React.useState(false);
 
   const openDrawerRight = () => setOpenRight(true);
@@ -58,6 +64,9 @@ const DrawerCode = ({ handleCategory, handleBrand }) => {
             <CategoryCode
               handleCategory={handleCategory}
               handleBrand={handleBrand}
+              handlePrice={handlePrice}
+              minPrice={minPrice}
+              maxPrice={maxPrice}
             ></CategoryCode>
           </>
         </Drawer>
