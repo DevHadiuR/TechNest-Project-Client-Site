@@ -9,6 +9,7 @@ import axios from "axios";
 import PaginationCode from "./PaginationCode";
 import Swal from "sweetalert2";
 import "sweetalert2/src/sweetalert2.scss";
+import { RotateLoader } from "react-spinners";
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -92,7 +93,7 @@ const Products = () => {
   // ------------------------
 
   // Fetch all data
-  const { data: Products = [] } = useQuery({
+  const { data: Products = [], isLoading } = useQuery({
     queryFn: () => getData(),
     queryKey: [
       "allProducts",
@@ -109,7 +110,7 @@ const Products = () => {
 
   const getData = async () => {
     const { data } = await axios(
-      `http://localhost:5000/allProducts?page=${currentPage}&size=${itemsPerPage}&selectedSort=${selectedCategory}&search=${search}&selectedBrands=${selectedBrands}&selectedCategories=${selectedCategories}&minPrice=${minPrice}&maxPrice=${maxPrice}`
+      `https://server-site-blond.vercel.app/allProducts?page=${currentPage}&size=${itemsPerPage}&selectedSort=${selectedCategory}&search=${search}&selectedBrands=${selectedBrands}&selectedCategories=${selectedCategories}&minPrice=${minPrice}&maxPrice=${maxPrice}`
     );
     setSearchText("");
 
@@ -171,7 +172,17 @@ const Products = () => {
               </div>
             </>
           </div>
+          <>
+            {isLoading && (
+              <div className="h-full  flex justify-center items-center">
+                <p className="text-xl lg:text-3xl font-extrabold text-purple-600">
+                  <RotateLoader />
+                </p>
+              </div>
+            )}
+          </>
           {/* all products card div */}
+
           <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {Products.map((Product) => (
               <SingleProduct
