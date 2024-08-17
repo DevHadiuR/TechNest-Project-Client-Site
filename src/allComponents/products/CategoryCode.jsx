@@ -1,14 +1,40 @@
-const CategoryCode = ({ handleBrand, handleCategory }) => {
+const CategoryCode = ({
+  handleBrand,
+  handleCategory,
+  handlePrice,
+  minPrice,
+  maxPrice,
+}) => {
   return (
     <>
       {/* price */}
       <div className="border-t-2 border-gray-300 py-3">
         <h1 className="text-lg font-medium">Price Range</h1>
-        <form className="flex gap-5 mt-3">
-          <input className="w-[50%]" placeholder="Min" type="number" />
-
-          <input className="w-[50%]" placeholder="Max" type="number" />
-        </form>
+        <div className="mt-3 flex justify-center items-center gap-3">
+          <div className="">
+            <input
+              className="w-full border-purple-500 rounded-lg "
+              placeholder="Min"
+              type="number"
+              min="50"
+              name="min"
+              value={minPrice}
+              onChange={handlePrice}
+            />
+          </div>
+          <div className="text-xl font-semibold">-</div>
+          <div className="">
+            <input
+              className="input-style w-full border-purple-500 rounded-lg"
+              placeholder="Max"
+              type="number"
+              max="550"
+              name="max"
+              value={maxPrice}
+              onChange={handlePrice}
+            />
+          </div>
+        </div>
       </div>
       {/* brand */}
       <div className="border-t-2 border-gray-300 py-3 mt-3">

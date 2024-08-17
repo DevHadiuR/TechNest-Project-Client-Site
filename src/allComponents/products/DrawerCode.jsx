@@ -27,7 +27,7 @@ const DrawerCode = ({ handleCategory, handleBrand }) => {
           placement="right"
           open={openRight}
           onClose={closeDrawerRight}
-          className="p-4"
+          className="p-4 w-[80%]"
         >
           <div className="mb-6 flex items-center justify-between">
             <Typography variant="h5" color="blue-gray">
@@ -56,8 +56,8 @@ const DrawerCode = ({ handleCategory, handleBrand }) => {
           </div>
           <>
             <CategoryCode
-             handleCategory={handleCategory}
-             handleBrand={handleBrand}
+              handleCategory={handleCategory}
+              handleBrand={handleBrand}
             ></CategoryCode>
           </>
         </Drawer>

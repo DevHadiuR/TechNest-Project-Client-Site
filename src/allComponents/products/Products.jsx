@@ -15,6 +15,25 @@ const Products = () => {
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [Count, setCount] = useState(0);
+  const [minPrice, setMinPrice] = useState(undefined);
+  const [maxPrice, setMaxPrice] = useState(undefined);
+
+  // handle min and max price range
+  const handlePrice = (e) => {
+    const { name, value } = e.target;
+
+    // if (name === "min" && value < 50) {
+    //   setMinPrice(50);
+    // }
+
+    if (name === "min") {
+      setMinPrice(value);
+    } else if (name === "max") {
+      setMaxPrice(value);
+    }
+  };
+
+  console.log(`minPrice : ${minPrice}`, `maxPrice : ${maxPrice}`);
 
   // handle categorizing (price , brand name , category name)
   const handleBrand = (e) => {
@@ -85,12 +104,14 @@ const Products = () => {
       search,
       selectedBrands,
       selectedCategories,
+      minPrice,
+      maxPrice,
     ],
   });
 
   const getData = async () => {
     const { data } = await axios(
-      `http://localhost:5000/allProducts?page=${currentPage}&size=${itemsPerPage}&selectedSort=${selectedCategory}&search=${search}&selectedBrands=${selectedBrands}&selectedCategories=${selectedCategories}`
+      `http://localhost:5000/allProducts?page=${currentPage}&size=${itemsPerPage}&selectedSort=${selectedCategory}&search=${search}&selectedBrands=${selectedBrands}&selectedCategories=${selectedCategories}&minPrice=${minPrice}&maxPrice=${maxPrice}`
     );
     setSearchText("");
 
@@ -114,13 +135,16 @@ const Products = () => {
       </>
       <div className="mt-10 lg:gap-5 grid grid-cols-4 w-[95%] mx-auto">
         {/* left */}
-        <div className="hidden lg:block p-3 border border-purple-300">
+        <div className="hidden lg:block p-3 border border-purple-300 rounded-lg">
           <Typography className="mb-5" variant="h5" color="blue-gray">
             Categorize products
           </Typography>
           <CategoryCode
             handleCategory={handleCategory}
             handleBrand={handleBrand}
+            handlePrice={handlePrice}
+            minPrice={minPrice}
+            maxPrice={maxPrice}
           ></CategoryCode>
         </div>
         {/* right */}
@@ -131,8 +155,8 @@ const Products = () => {
               <div className="flex justify-between gap-5 lg:gap-0">
                 <div className="lg:hidden">
                   <DrawerCode
-                   handleCategory={handleCategory}
-                   handleBrand={handleBrand}
+                    handleCategory={handleCategory}
+                    handleBrand={handleBrand}
                   ></DrawerCode>
                 </div>
                 <>
