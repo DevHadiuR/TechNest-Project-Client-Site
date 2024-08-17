@@ -19,14 +19,14 @@ const Home = () => {
           <Products></Products>
         </section>
 
-        <section id="cart">
-          <Cart></Cart>
-        </section>
         <section id="about">
           <About></About>
         </section>
         <section id="contact">
           <Contact></Contact>
+        </section>
+        <section id="cart">
+          <Cart></Cart>
         </section>
       </div>
     </div>

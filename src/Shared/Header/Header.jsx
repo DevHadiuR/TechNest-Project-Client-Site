@@ -73,7 +73,7 @@ const Header = () => {
         href="#contact"
         className="p-1 text-lg transition-all  px-3 py-2  hover:bg-transparent border-animate"
       >
-        Contact Us
+        Newsletter
       </a>
       <a
         href="#cart"
